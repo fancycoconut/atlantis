@@ -1,9 +1,9 @@
 use sdl2;
 
 struct SDLWindow {
-  width: i32;
-  height: i32;
-  zoom: i32;
+  width: i32,
+  height: i32,
+  zoom: i32,
 
 }
 
