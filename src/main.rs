@@ -1,3 +1,4 @@
+mod engine;
 mod emulator_host;
 mod configuration;
 
@@ -10,7 +11,7 @@ fn main() {
   let config = ConfigurationManager::new("appsettings.json".to_string())
     .build();
 
-  let emulator = EmulatorHost::new();
+  let emulator = EmulatorHost::new(config);
   emulator.test();
 
 }

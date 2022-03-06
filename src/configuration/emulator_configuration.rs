@@ -4,7 +4,7 @@ use std::collections::HashMap;
 #[derive(Deserialize)]
 pub struct EmulatorConfiguration {
   emulator: EmulatorSettings,
-  controller: ControllerConfiguration,
+  controller: ControllerSettings,
 }
 
 #[derive(Deserialize)]
@@ -14,6 +14,6 @@ struct EmulatorSettings {
 
 #[derive(Deserialize)]
 //#[allow(non_snake_case)]
-struct ControllerConfiguration {
+struct ControllerSettings {
   key_mappings: HashMap<String, String>,
 }
