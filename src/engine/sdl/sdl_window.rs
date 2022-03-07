@@ -1,13 +1,14 @@
 use sdl2;
+use crate::engine::window::Window as Window;
 
-struct SDLWindow {
+pub struct SDLWindow {
   width: i32,
   height: i32,
   zoom: i32,
 
 }
 
-impl Window for SDLWindow {
+impl SDLWindow {
   pub fn new(width: i32, height: i32, zoom: i32) -> SDLWindow {
     SDLWindow {
       width: width,
@@ -15,17 +16,19 @@ impl Window for SDLWindow {
       zoom: zoom
     }
   }
+}
 
-  pub fn show(&self, title: String) {
-    let target_width = width * zoom;
-    let target_height = height * height;
+impl Window for SDLWindow {
+  fn show(&self, title: String) {
+    let target_width = &self.width * &self.zoom;
+    let target_height = &self.height * &self.zoom;
   }
 
-  pub fn set_title(&self, title: String) {
+  fn set_title(&self, title: String) {
 
   }
 
-  pub fn draw(&self) {
+  fn draw(&self) {
 
   }
 }
