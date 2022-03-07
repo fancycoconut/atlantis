@@ -5,7 +5,6 @@ pub struct SDLWindow {
   width: i32,
   height: i32,
   zoom: i32,
-
 }
 
 impl SDLWindow {
@@ -20,8 +19,16 @@ impl SDLWindow {
 
 impl Window for SDLWindow {
   fn show(&self, title: String) {
-    let target_width = &self.width * &self.zoom;
-    let target_height = &self.height * &self.zoom;
+    let target_width = (&self.width * &self.zoom) as u32;
+    let target_height = (&self.height * &self.zoom) as u32;
+
+    let sdl_context = sdl2::init().unwrap();
+    let video_subsystem = sdl_context.video().unwrap();
+
+    let window = video_subsystem
+      .window(&title, target_width, target_height)
+      .position_centered()
+      .build();
   }
 
   fn set_title(&self, title: String) {

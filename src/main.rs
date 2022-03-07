@@ -15,5 +15,6 @@ fn main() {
 
   let emulator = EmulatorHost::new(config);
   emulator.test();
+  emulator.start();
 
 }
