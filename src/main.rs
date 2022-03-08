@@ -13,8 +13,6 @@ fn main() {
   let config = ConfigurationManager::new("appsettings.json".to_string())
     .build();
 
-  let emulator = EmulatorHost::new(config);
-  emulator.test();
+  let mut emulator = EmulatorHost::new(config);
   emulator.start();
-
 }

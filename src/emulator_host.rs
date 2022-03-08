@@ -22,11 +22,16 @@ impl EmulatorHost {
     }
   }
 
-  pub fn start(&self) {
+  pub fn start(&mut self) {
     self.window.show(app_constants::TITLE.to_string());
+
+    self.running = true;
+    self.main_emulation_loop();
   }
 
-  pub fn test(&self) {
-    println!("It works!");
+  fn main_emulation_loop(&self) {
+    while self.running {
+      println!("Emulator running");
+    }
   }
 }

@@ -13,10 +13,19 @@ impl ConfigurationManager {
   }
 
   pub fn build(&self) -> EmulatorConfiguration {
-    let data = fs::read_to_string(&self.config_file)
-      .expect("Unable to read config file");
+    let data = fs::read_to_string(&self.config_file);
 
-    serde_json::from_str(&data).unwrap()
+    let data = match data {
+      Ok(text) => text,
+      _ => panic!("Unable to read {}", self.config_file)
+    };
+
+    let emulator_configuration = match serde_json::from_str(&data) {
+      Ok(config) => config,
+      _ => panic!("Unable to parse application config")
+    };
+
+    emulator_configuration
   }
 
 }
