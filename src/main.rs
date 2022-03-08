@@ -1,3 +1,4 @@
+mod file_util;
 mod engine;
 mod app_constants;
 mod emulation;
