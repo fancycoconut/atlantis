@@ -1,5 +1,5 @@
 use std::fs;
-use crate::configuration::emulator_configuration::EmulatorConfiguration as EmulatorConfiguration;
+use crate::configuration::emulator_configuration::EmulatorConfiguration;
 
 pub struct ConfigurationManager {
   config_file: String,
@@ -16,8 +16,7 @@ impl ConfigurationManager {
     let data = fs::read_to_string(&self.config_file)
       .expect("Unable to read config file");
 
-    let config: EmulatorConfiguration = serde_json::from_str(&data).unwrap();
-    return config;
+    serde_json::from_str(&data).unwrap()
   }
 
 }

@@ -1,5 +1,5 @@
 use sdl2;
-use crate::engine::window::Window as Window;
+use crate::engine::window::Window;
 
 pub struct SDLWindow {
   width: i32,

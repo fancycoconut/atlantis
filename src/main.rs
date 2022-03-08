@@ -4,8 +4,8 @@ mod emulation;
 mod emulator_host;
 mod configuration;
 
-use emulator_host::EmulatorHost as EmulatorHost;
-use configuration::configuration_manager::ConfigurationManager as ConfigurationManager;
+use emulator_host::EmulatorHost;
+use configuration::configuration_manager::ConfigurationManager;
 
 fn main() {
   println!("Hello World!");
