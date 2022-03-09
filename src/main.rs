@@ -15,5 +15,6 @@ fn main() {
     .build();
 
   let mut emulator = EmulatorHost::new(config);
+  emulator.set_rom("/Users/kawaiwong/Documents/armwrestler-gba-fixed.gba".to_string());
   emulator.start();
 }
