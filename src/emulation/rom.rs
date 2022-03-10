@@ -8,7 +8,7 @@ pub struct ROM {
   maker_code: String,
   main_unit_code: u8,
   device_type: u8,
-  version: u8,
+  software_version: u8,
   checksum: u8,
 
   data: Vec::<u8>
@@ -22,7 +22,7 @@ impl ROM {
       maker_code: "".to_string(),
       main_unit_code: 0,
       device_type: 0,
-      version: 0,
+      software_version: 0,
       checksum: 0,
 
       data: Vec::<u8>::new()
@@ -47,6 +47,11 @@ impl ROM {
 
     self.game_title = from_utf8(&self.data[0xA0..0xAC]).unwrap().to_string();
     self.game_code = from_utf8(&self.data[0xAC..0xB0]).unwrap().to_string();
+    self.maker_code = from_utf8(&self.data[0xB0..0xB2]).unwrap().to_string();
+    self.main_unit_code = self.data[0xB3];
+    self.device_type = self.data[0xB4];
+    self.software_version = self.data[0xBC];
+    self.checksum = self.data[0xBD];
 
     Ok(true)
   }
