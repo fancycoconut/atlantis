@@ -1,7 +1,7 @@
 use crate::app_constants as AppConstants;
 use crate::engine::window::Window;
 use crate::engine::sdl::sdl_window::SDLWindow;
-use crate::engine::sdl::sdl_window::SDLEvents;
+use crate::engine::sdl::sdl_events::SDLEvents;
 use crate::emulation::gba::Gba;
 use crate::emulation::rom::ROM;
 use crate::emulation::gba_constants as Constants;
@@ -9,7 +9,7 @@ use crate::configuration::emulator_configuration::EmulatorConfiguration;
 
 pub struct EmulatorHost {
   window: SDLWindow,
-  events: SDLEvents,
+  //events: SDLEvents,
   config: EmulatorConfiguration,
 
   gba: Gba,
@@ -27,7 +27,7 @@ impl EmulatorHost {
       rom: ROM::new(),
 
       config: config,
-      events: SDLEvents::new(),
+      //events: SDLEvents::new(),
       window: SDLWindow::new(Constants::GBA_WIDTH, Constants::GBA_HEIGHT, zoom)
     }
   }
