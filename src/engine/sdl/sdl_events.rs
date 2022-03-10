@@ -1,14 +1,13 @@
-use crate::engine::
-
-type Callback = fn();
+use crate::engine::events::Events;
+use crate::engine::events::EventsCallback;
 
 pub struct SDLEvents {
-  exit_handler: Callback,
-  keypress_handler: Callback,
+  exit_handler: EventsCallback,
+  keypress_handler: EventsCallback,
 }
 
 impl SDLEvents {
-  pub fn new (exit_handler: Callback, keypress_handler: Callback,) -> Self {
+  pub fn new (exit_handler: EventsCallback, keypress_handler: EventsCallback) -> Self {
     Self { 
       exit_handler: exit_handler,
       keypress_handler: keypress_handler
@@ -16,5 +15,9 @@ impl SDLEvents {
   }
 }
 
-impl 
+impl Events for SDLEvents {
+  fn poll(&self) {
+
+  }
+}
 

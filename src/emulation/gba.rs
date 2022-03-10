@@ -11,7 +11,7 @@ impl Gba {
     }
   }
 
-  pub fn start(&self, rom: ROM) {
+  pub fn start(&self, rom: &ROM) {
 
   }
 }
