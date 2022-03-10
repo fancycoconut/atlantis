@@ -4,6 +4,10 @@ use std::io::Read;
 use std::path::Path;
 use std::ffi::OsStr;
 
+pub fn file_exists(file: &str) -> bool {
+  Path::new(file).exists()
+}
+
 pub fn read_file(file: &str) -> Vec<u8> {
   // https://stackoverflow.com/questions/31192956/whats-the-de-facto-way-of-reading-and-writing-files-in-rust-1-x
   let mut buffer = Vec::new();

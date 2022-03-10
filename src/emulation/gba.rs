@@ -1,3 +1,4 @@
+use crate::emulation::rom::ROM;
 
 pub struct Gba {
 
@@ -8,5 +9,9 @@ impl Gba {
     Self {
       
     }
+  }
+
+  pub fn start(&self, rom: ROM) {
+
   }
 }

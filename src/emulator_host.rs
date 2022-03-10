@@ -1,4 +1,3 @@
-//use crate::rom::ROM;
 use crate::app_constants as AppConstants;
 use crate::engine::window::Window;
 use crate::engine::sdl::sdl_window::SDLWindow;
@@ -12,6 +11,7 @@ pub struct EmulatorHost {
   window: SDLWindow,
   running: bool,
   gba: Gba,
+  rom: ROM,
 }
 
 impl EmulatorHost {
@@ -22,17 +22,25 @@ impl EmulatorHost {
       config: config,
       running: false,
       gba: Gba::new(),
+      rom: ROM::new(),
       window: SDLWindow::new(Constants::GBA_WIDTH, Constants::GBA_HEIGHT, zoom)
     }
   }
 
-  pub fn set_rom(&self, file: String) {
+  pub fn set_rom(&mut self, file: String) {
     let mut rom = ROM::new();
-    rom.load(&file);
+    // TODO Handle errors and report to user
+    _ = rom.load(&file);
+    self.rom = rom;
   }
 
   pub fn start(&mut self) {
+    if self.rom.data.len() == 0 {
+      panic!("No ROM has been loaded!");
+    }
+
     self.window.show(AppConstants::TITLE.to_string());
+    self.gba.start(self.rom);
 
     self.running = true;
     self.main_emulation_loop();
