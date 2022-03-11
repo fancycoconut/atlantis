@@ -2,8 +2,6 @@ use sdl2;
 use sdl2::video::Window;
 use crate::engine::window::Window as IWindow;
 
-
-
 pub struct SDLWindow {
   width: i32,
   height: i32,
@@ -27,8 +25,10 @@ impl IWindow for SDLWindow {
     let target_width = (&self.width * &self.zoom) as u32;
     let target_height = (&self.height * &self.zoom) as u32;
 
-    let sdl_context = sdl2::init().unwrap();
-    let video_subsystem = sdl_context.video().unwrap();
+    let sdl_context = sdl2::init().expect("Failed to initialize SDL2");
+    let video_subsystem = sdl_context
+      .video()
+      .unwrap();
 
     let window = match video_subsystem
       .window(&title, target_width, target_height)

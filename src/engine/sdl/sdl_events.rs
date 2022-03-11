@@ -1,3 +1,4 @@
+use sdl2::event::Event;
 use crate::engine::events::Events;
 use crate::engine::events::EventsCallback;
 
@@ -17,7 +18,7 @@ impl SDLEvents {
 
 impl Events for SDLEvents {
   fn poll(&self) {
-
+    for event in event_pump
   }
 }
 

@@ -56,4 +56,14 @@ impl EmulatorHost {
       println!("Emulator running");
     }
   }
+
+  fn exit_handler(&mut self) {
+    self.running = false;
+    println!("Emulator exit detected... Shutting down.");
+  }
+
+  fn keypress_handler(&mut self) {
+
+  }
+
 }
