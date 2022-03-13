@@ -1,6 +1,6 @@
 
 // Aliases
-pub type EventsCallback = fn();
+//pub type EventsCallback = fn();
 
 // Interfaces
 pub trait Events {
