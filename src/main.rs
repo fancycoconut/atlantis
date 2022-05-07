@@ -1,3 +1,4 @@
+use std::env;
 use std::include_bytes;
 use sdl2::event::Event;
 
@@ -13,6 +14,10 @@ use configuration::configuration_manager::ConfigurationManager;
 
 fn main() {
   println!("Hello World!");
+  let args: Vec<_> = env::args().collect();
+  if args.len() > 1 {
+    println!("The first argument is {}", args[1]);
+  }
 
   let bios = include_bytes!("assets/GBA.BIOS");
   let config = ConfigurationManager::new("appsettings.json".to_string())
