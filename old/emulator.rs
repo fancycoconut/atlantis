@@ -6,7 +6,7 @@ use crate::emulation::rom::ROM;
 use crate::emulation::gba_constants as Constants;
 use crate::configuration::emulator_configuration::EmulatorConfiguration;
 
-pub struct EmulatorHost {
+pub struct Emulator {
   window: SDLWindow,
   config: EmulatorConfiguration,
 
@@ -15,12 +15,12 @@ pub struct EmulatorHost {
   running: bool,
 }
 
-impl EmulatorHost {
-  pub fn new(config :EmulatorConfiguration) -> EmulatorHost {
+impl Emulator {
+  pub fn new(config :EmulatorConfiguration) -> Emulator {
     let zoom = config.emulator.zoom;
     let window = SDLWindow::new(Constants::GBA_WIDTH, Constants::GBA_HEIGHT, zoom);
 
-    EmulatorHost {
+    Emulator {
       running: false,
       gba: Gba::new(),
       rom: ROM::new(),

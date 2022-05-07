@@ -4,5 +4,5 @@
 
 // Interfaces
 pub trait Events {
-  fn poll(&self); 
+  fn poll(&mut self); 
 }

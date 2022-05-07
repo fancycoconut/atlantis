@@ -1,6 +1,7 @@
 use sdl2;
 use sdl2::Sdl;
 use sdl2::EventPump;
+use sdl2::event::{Event, WindowEvent};
 use sdl2::video::Window;
 use sdl2::VideoSubsystem;
 use crate::engine::window::Window as IWindow;
@@ -64,7 +65,16 @@ impl IWindow for SDLWindow {
 }
 
 impl Events for SDLWindow {
-  fn poll(&self) {
-    
+  fn poll(&mut self) {
+    for event in self.event_pump.poll_iter() {
+      match event {
+        Event::Quit {
+        },
+        Event::KeyDown {
+
+        }
+        _ => { }
+      }
+    }
   }
 }
