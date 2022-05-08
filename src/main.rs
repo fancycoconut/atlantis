@@ -85,7 +85,7 @@ fn handle_events(emulator_is_running: &mut bool,
       Event::DropFile { filename, .. } => {
         *rom_path = filename;
         _ = rom.load(&rom_path);
-        println!("Loaded ROM from `{}`", rom_path);
+        println!("Loaded ROM from file drop `{}`", rom_path);
       },
       _ => {
         // Ignore everything else
