@@ -1,16 +1,20 @@
 use std::env;
 use std::include_bytes;
+use std::collections::HashMap;
+use std::str::FromStr;
 use sdl2::event::Event;
+
 
 // mod file_util;
 // mod engine;
 // mod app_constants;
-// mod emulation;
 // mod emulator;
 mod configuration;
 mod constants;
+mod emulation;
 
 use configuration::configuration_manager::ConfigurationManager;
+use emulation::keypad::Keys;
 
 fn main() {
   println!("Hello World!");
@@ -42,19 +46,30 @@ fn main() {
   let mut running = true;
   let mut event_pump = sdl_context.event_pump().unwrap();
   while running {
-    handle_events(&mut running, &mut event_pump);
+    handle_events(&mut running, &config.controller.key_mappings, &mut event_pump);
   }
 }
 
-fn handle_events(emulator_is_running: &mut bool, event_pump: &mut sdl2::EventPump) {
+fn handle_events(emulator_is_running: &mut bool, 
+  key_mappings: &HashMap<String, String>,
+  event_pump: &mut sdl2::EventPump) {
   for event in event_pump.poll_iter() {
     match event {
       Event::Quit { .. } => {
         *emulator_is_running = false;
         println!("Emulator stopped running... Exiting...");
       },
-      Event::KeyDown { .. } => {
-        
+      Event::KeyDown { 
+        keycode: Some(keycode), 
+        .. 
+      } => {
+        let key_mapping = match key_mappings.get(&keycode.to_string()) {
+          Some(key) => key,
+          _ => ""
+        };
+
+        let key = Keys::from_str(key_mapping).unwrap();
+        println!("Keypress detected {:?}", key);
       },
       _ => {
         

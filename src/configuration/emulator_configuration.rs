@@ -1,6 +1,8 @@
 use serde::{Deserialize};
 use std::collections::HashMap;
 
+use crate::emulation::keypad::Keys;
+
 #[derive(Deserialize)]
 pub struct EmulatorConfiguration {
   pub emulator: EmulatorSettings,
